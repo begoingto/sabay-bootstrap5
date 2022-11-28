@@ -27,7 +27,9 @@ header {
         }
     }
 }
-
+.navbar{
+    z-index: 1001;
+}
 nav {
     .navbar-nav {
         --bs-nav-link-padding-y: 12px;
@@ -225,7 +227,15 @@ nav {
                 a {
                     &:hover {
                         .img-thumbnail {
-                            box-shadow: inset 2px 3px 12px 5px #000000;
+                            &::after {
+                                content   : '';
+                                position  : absolute;
+                                width     : 100%;
+                                height    : 100%;
+                                top       : 0;
+                                left      : 0;
+                                box-shadow: inset 2px 3px 12px 5px #000000;
+                            }
                         }
 
                         img {
@@ -235,8 +245,9 @@ nav {
                 }
 
                 .img-thumbnail {
-                    height: 200px;
-                    width : 100%;
+                    position: relative;
+                    height  : 200px;
+                    width   : 100%;
                 }
 
                 img {
@@ -251,6 +262,57 @@ nav {
                         font-family: 'Battambang', 'Arial';
                         font-size  : 18px;
                     }
+                }
+            }
+        }
+
+        .item-body {
+            .item-link {
+                &:hover {
+                    .card-img-top {
+                        img {
+                            transform: scale(0.98);
+                        }
+
+                        &::after {
+                            content   : '';
+                            position  : absolute;
+                            width     : 100%;
+                            height    : 100%;
+                            top       : 0;
+                            left      : 0;
+                            box-shadow: inset 2px 3px 12px 2px #000000;
+                        }
+                    }
+                }
+            }
+
+            .card {
+                .card-img-top {
+                    position: relative;
+                    width   : 100%;
+                    height  : 109px;
+                }
+
+                .card-body {
+                    .card-title {
+                        @extend .limit-2-line;
+                        font-size         : 14px;
+                        -webkit-line-clamp: 3;
+                        line-clamp        : 3;
+                    }
+                }
+            }
+
+            .float-start {
+                &.w-75 {
+                    width: 70% !important;
+                }
+            }
+
+            .float-end {
+                &.w-25 {
+                    width: 29% !important;
                 }
             }
         }
