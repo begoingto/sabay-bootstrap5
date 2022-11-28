@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Nokora&family=Koulen&family=Roboto:wght@500&family=Battambang:wght@700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/arial');
+@import '_variable';
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+* {
+    font-family: 'Nokora';
+}
+
+body {
+    background-color: #f6f6f6;
+}
+
+header {
+    padding: 15px 0;
+
+    .logo {
+        width: 35px;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    header {
+        .logo {
+            width: 82px;
+        }
+    }
+}
+
+nav {
+    .navbar-nav {
+        --bs-nav-link-padding-y: 12px;
+
+        .nav-link {
+            font-family: 'Arial', 'Koulen';
+            font-size  : 18px;
+
+            &.active {
+                color      : rgba($color: #fff, $alpha: 1.0);
+                background : #D90C16;
+                text-shadow: 1px 1px 1px rgba($color: #000000, $alpha: 0.4);
+            }
+        }
+    }
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-menu[data-bs-popper] {
+    top  : 90%;
+    left : inherit;
+    right: 0;
+}
+
+.title {
+    line-height: 32px;
+    font-family: 'Battambang', 'Arial';
+    text-shadow: -1px -1px 1px rgba(255, 255, 255, .1), 1px 1px 1px rgba(0, 0, 0, .5);
+}
+
+.limit-2-line {
+    overflow          : hidden;
+    text-overflow     : ellipsis;
+    display           : -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp        : 2;
+    -webkit-box-orient: vertical;
+}
+
+.recent-post {
+    padding: 15px 0;
+
+    .container {
+        padding: 0 24px;
+    }
+
+    .d-flex {
+        a {
+            &:last-child {
+                width: 365px;
+            }
+        }
+    }
+
+    .card {
+        background-position: center;
+        background-repeat  : no-repeat;
+        background-size    : cover;
+        width              : 500px;
+        height             : 254px;
+        overflow           : hidden;
+        position           : relative;
+
+        &:hover {
+            .card-body {
+                .content {
+                    max-height: 130px;
+                    transition: max-height 0.7s;
+                }
+
+                h5 {
+                    color     : $danger;
+                    transition: all 0.7s;
+                }
+            }
+
+            &::before {
+                background: linear-gradient(to bottom, #0000005b 0%, rgba($color: #000000, $alpha: 1.0) 100%);
+                transition: all 0.7s;
+            }
+
+        }
+
+        .card-body {
+            padding: 30px 20px 20px;
+            z-index: 3;
+
+            .content {
+                overflow  : hidden;
+                max-height: 70px;
+                transition: max-height 0.7s;
+            }
+
+            h5 {
+                @extend .title;
+                transition: all 0.7s;
+            }
+
+            p {
+                @extend .limit-2-line;
+
+                &.mb-0 {
+                    font-size: 13px;
+                }
+            }
+        }
+
+        &::before {
+            content   : '';
+            width     : 100%;
+            height    : 100%;
+            position  : absolute;
+            background: linear-gradient(to bottom, #0000001a 0%, rgba($color: #000000, $alpha: 0.7) 100%);
+            transition: all 0.7s;
+            z-index   : 2;
+        }
+
+        .category {
+            color      : $white;
+            font-size  : 14px;
+            display    : flex;
+            line-height: 30px;
+            padding    : 0 8px 0 15px;
+            align-items: center;
+            position   : absolute;
+            top        : 10px;
+            left       : 0;
+            height     : 30px;
+            z-index    : 4;
+            background : var(--category-color);
+
+            &::after {
+                content   : '';
+                position  : absolute;
+                right     : -14px;
+                top       : 0;
+                width     : 15px;
+                height    : 100%;
+                background: var(--category-color);
+                clip-path : polygon(0 0, 15% 0, 100% 100%, 0% 100%);
+            }
+        }
+    }
+}
+
+.ads-recent {
+    width     : 100%;
+    height    : 250px;
+    object-fit: cover;
+
+    &:first-child {
+        margin-bottom: 9px;
+    }
+}
+
+.lastest-items {
+    .section-header {
+        a {
+            @extend .title;
+            line-height     : inherit;
+            position        : relative;
+            text-decoration : none;
+            background-color: $danger;
+            color           : $white;
+            font-family     : 'Koulen';
+            padding         : 10px 20px;
+            height          : 46px;
+            font-size       : 18px;
+            width           : fit-content;
+            display         : block;
+
+            &::after {
+                content   : '';
+                position  : absolute;
+                right     : -24px;
+                top       : 0;
+                width     : 26px;
+                height    : 100%;
+                background: $danger;
+                clip-path : polygon(0 0, 25% 0, 100% 100%, 0% 100%);
+            }
+        }
+    }
+
+    .items {
+        padding: 20px 35px;
+
+        .item-top {
+            .card {
+                width: calc(100% /3);
+
+                a {
+                    &:hover {
+                        .img-thumbnail {
+                            box-shadow: inset 2px 3px 12px 5px #000000;
+                        }
+
+                        img {
+                            transform: scale(0.98);
+                        }
+                    }
+                }
+
+                .img-thumbnail {
+                    height: 200px;
+                    width : 100%;
+                }
+
+                img {
+                    width     : 100%;
+                    height    : 100%;
+                    object-fit: cover;
+                }
+
+                .card-body {
+                    h5 {
+                        @extend .limit-2-line;
+                        font-family: 'Battambang', 'Arial';
+                        font-size  : 18px;
+                    }
+                }
+            }
+        }
+    }
+}
